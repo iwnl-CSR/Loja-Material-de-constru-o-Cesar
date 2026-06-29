@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Gomes • Materiais de Construção</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8f8f8;
+    }
+
+    /* Header - Vermelho */
+    header {
+      background: #b71c1c;
+      color: white;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
+    }
+
+    .logo {
+      font-size: 2.4rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcccc;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('https://source.unsplash.com/random/1920x1080/?construction,red') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 4.2rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.6rem;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      padding: 16px 45px;
+      background: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .btn:hover {
+      background: #b71c1c;
+      transform: scale(1.08);
+    }
+
+    /* Produtos */
+    .produtos {
+      padding: 110px 5% 80px;
+      text-align: center;
+      background: white;
+    }
+
+    .produtos h2 {
+      font-size: 3rem;
+      margin-bottom: 60px;
+      color: #b71c1c;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 30px;
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(183, 28, 28, 0.15);
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-18px);
+      box-shadow: 0 25px 35px rgba(183, 28, 28, 0.25);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-info {
+      padding: 22px;
+    }
+
+    .card-info h3 {
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .preco {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+
+    footer {
+      background: #b71c1c;
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">SUPER GOMES</div>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Produtos</a>
+      <a href="#">Promoções</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>SUPER GOMES</h1>
+      <p>Qualidade e preço justo em materiais de construção</p>
+      <button class="btn">Ver Catálogo Completo</button>
+    </div>
+  </section>
+
+  <section class="produtos">
+    <h2>Produtos em Destaque</h2>
+    
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://source.unsplash.com/random/600x400/?cement" alt="Cimento">
+        <div class="card-info">
+          <h3>Cimento CP II 50kg</h3>
+          <p class="preco">R$ 32,90</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://source.unsplash.com/random/600x400/?brick" alt="Tijolo">
+        <div class="card-info">
+          <h3>Tijolo Baiano 6 furos</h3>
+          <p class="preco">R$ 1,25</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://source.unsplash.com/random/600x400/?sand" alt="Areia">
+        <div class="card-info">
+          <h3>Areia Média (m³)</h3>
+          <p class="preco">R$ 95,00</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://source.unsplash.com/random/600x400/?steel" alt="Ferro">
+        <div class="card-info">
+          <h3>Vergalhão 8mm (12m)</h3>
+          <p class="preco">R$ 48,90</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Super Gomes Materiais de Construção</strong> © 2026</p>
+    <p>Av. Principal, 1234 • Centro • (XX) 99999-9999</p>
+  </footer>
+
+</body>
+</html>
