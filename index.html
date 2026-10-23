@@ -10,9 +10,10 @@
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #f8f8f8;
+      scroll-behavior: smooth;
     }
 
-    /* Header - Vermelho */
+    /* ========== HEADER ========== */
     header {
       background: #b71c1c;
       color: white;
@@ -27,28 +28,62 @@
     }
 
     .logo {
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: bold;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     nav a {
       color: white;
-      margin: 0 18px;
+      margin: 0 12px;
       text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #ffcccc;
+    nav a:hover { color: #ffcccc; }
+
+    .cart-btn {
+      background: #d32f2f;
+      border: 2px solid white;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
     }
 
-    /* Hero */
+    .cart-btn:hover { background: #9a0007; }
+
+    #cart-count {
+      background: white;
+      color: #b71c1c;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    /* ========== HERO ========== */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
-                  url('https://source.unsplash.com/random/1920x1080/?construction,red') center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('imagens/hero.svg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -57,50 +92,51 @@
     }
 
     .hero h1 {
-      font-size: 4.2rem;
+      font-size: 3.8rem;
       margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
 
     .hero p {
-      font-size: 1.6rem;
-      margin-bottom: 40px;
+      font-size: 1.4rem;
+      margin-bottom: 35px;
     }
 
     .btn {
-      padding: 16px 45px;
+      padding: 14px 40px;
       background: #d32f2f;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.4s;
+      transition: 0.35s;
     }
 
     .btn:hover {
       background: #b71c1c;
-      transform: scale(1.08);
+      transform: scale(1.06);
     }
 
-    /* Produtos */
+    /* ========== PRODUTOS ========== */
     .produtos {
-      padding: 110px 5% 80px;
+      padding: 110px 5% 70px;
       text-align: center;
       background: white;
     }
 
     .produtos h2 {
-      font-size: 3rem;
-      margin-bottom: 60px;
+      font-size: 2.6rem;
+      margin-bottom: 45px;
       color: #b71c1c;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 30px;
-      max-width: 1350px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -108,108 +144,514 @@
       background: white;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(183, 28, 28, 0.15);
-      transition: 0.4s;
+      box-shadow: 0 6px 18px rgba(183, 28, 28, 0.12);
+      transition: 0.35s;
+      border: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
-      transform: translateY(-18px);
-      box-shadow: 0 25px 35px rgba(183, 28, 28, 0.25);
+      transform: translateY(-10px);
+      box-shadow: 0 18px 32px rgba(183, 28, 28, 0.2);
     }
 
     .card img {
       width: 100%;
-      height: 260px;
+      height: 210px;
       object-fit: cover;
+      background: #eee;
     }
 
     .card-info {
-      padding: 22px;
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .card-info h3 {
       color: #333;
       margin-bottom: 8px;
+      font-size: 1.1rem;
     }
 
     .preco {
-      font-size: 1.7rem;
+      font-size: 1.45rem;
       font-weight: bold;
       color: #d32f2f;
+      margin-bottom: 14px;
     }
 
+    .add-btn {
+      margin-top: auto;
+      padding: 10px;
+      background: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-btn:hover { background: #d32f2f; }
+
+    /* ========== CARRINHO (MODAL) ========== */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: 2000;
+      justify-content: flex-end;
+    }
+
+    .cart-overlay.active { display: flex; }
+
+    .cart-panel {
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      background: white;
+      padding: 25px;
+      overflow-y: auto;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .cart-header h2 { color: #b71c1c; font-size: 1.6rem; }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-item-info { flex: 1; }
+
+    .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+
+    .cart-item-info p { color: #d32f2f; font-weight: bold; }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .qty-controls button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .remove-item {
+      background: none;
+      border: none;
+      color: #b71c1c;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .cart-total {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 2px solid #eee;
+    }
+
+    .cart-total h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .cart-total .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #888;
+      padding: 40px 0;
+      font-size: 1.1rem;
+    }
+
+    /* ========== CONTATO ========== */
+    .contato {
+      padding: 90px 5% 80px;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    .contato h2 {
+      font-size: 2.4rem;
+      color: #b71c1c;
+      margin-bottom: 35px;
+    }
+
+    .form-box {
+      max-width: 550px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .form-box label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .form-box input,
+    .form-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-box textarea { height: 120px; resize: vertical; }
+
+    .form-box button {
+      width: 100%;
+      padding: 14px;
+      background: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-box button:hover { background: #d32f2f; }
+
+    /* ========== FOOTER ========== */
     footer {
       background: #b71c1c;
       color: white;
       text-align: center;
-      padding: 45px 20px;
+      padding: 35px 20px;
+    }
+
+    footer p { margin: 5px 0; }
+
+    /* ========== RESPONSIVO ========== */
+    @media (max-width: 768px) {
+      .logo { font-size: 1.5rem; }
+      nav a { margin: 0 8px; font-size: 0.9rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero p { font-size: 1.15rem; }
+      .produtos h2, .contato h2 { font-size: 2rem; }
+      .cart-panel { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 4%;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">SUPER GOMES</div>
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Produtos</a>
-      <a href="#">Promoções</a>
-      <a href="#">Contato</a>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Carrinho <span id="cart-count">0</span>
+      </button>
     </nav>
   </header>
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" id="inicio">
     <div>
       <h1>SUPER GOMES</h1>
       <p>Qualidade e preço justo em materiais de construção</p>
-      <button class="btn">Ver Catálogo Completo</button>
+      <button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+        Ver Catálogo Completo
+      </button>
     </div>
   </section>
 
-  <section class="produtos">
+  <!-- PRODUTOS -->
+  <section class="produtos" id="produtos">
     <h2>Produtos em Destaque</h2>
     
-    <div class="grid">
-
-      <div class="card">
-        <img src="https://source.unsplash.com/random/600x400/?cement" alt="Cimento">
-        <div class="card-info">
-          <h3>Cimento CP II 50kg</h3>
-          <p class="preco">R$ 32,90</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://source.unsplash.com/random/600x400/?brick" alt="Tijolo">
-        <div class="card-info">
-          <h3>Tijolo Baiano 6 furos</h3>
-          <p class="preco">R$ 1,25</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://source.unsplash.com/random/600x400/?sand" alt="Areia">
-        <div class="card-info">
-          <h3>Areia Média (m³)</h3>
-          <p class="preco">R$ 95,00</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://source.unsplash.com/random/600x400/?steel" alt="Ferro">
-        <div class="card-info">
-          <h3>Vergalhão 8mm (12m)</h3>
-          <p class="preco">R$ 48,90</p>
-        </div>
-      </div>
-
+    <div class="grid" id="product-grid">
+      <!-- Produtos inseridos via JavaScript -->
     </div>
   </section>
 
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <h2>Fale Conosco</h2>
+    <div class="form-box">
+      <form id="contact-form">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Seu nome completo" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com" required>
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" placeholder="(85) 99999-9999">
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" placeholder="Como podemos ajudar?" required></textarea>
+
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <p><strong>Super Gomes Materiais de Construção</strong> © 2026</p>
-    <p>Av. Principal, 1234 • Centro • (XX) 99999-9999</p>
+    <p>Av. Principal, 1234 • Centro • (85) 99999-9999</p>
+    <p>Atendimento: Segunda a Sábado • 7h às 18h</p>
   </footer>
+
+  <!-- MODAL DO CARRINHO -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h2>🛒 Seu Carrinho</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+      </div>
+      <div id="cart-items"></div>
+      <div class="cart-total" id="cart-total-area" style="display:none;">
+        <h3>Total: R$ <span id="cart-total">0,00</span></h3>
+        <button class="btn" onclick="finalizarCompra()">Finalizar Compra</button>
+        <button class="btn" style="background:#666;" onclick="limparCarrinho()">Limpar Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== DADOS DOS PRODUTOS ==========
+    const produtos = [
+      { id: 1,  nome: "Cimento CP II 50kg",       preco: 32.90,  img: "imagens/cimento-cp-ii-50kg.svg" },
+      { id: 2,  nome: "Tijolo Baiano 6 furos",    preco: 1.25,   img: "imagens/tijolo-baiano-6-furos.svg" },
+      { id: 3,  nome: "Areia Média (m³)",         preco: 95.00,  img: "imagens/areia-media-m3.svg" },
+      { id: 4,  nome: "Vergalhão 8mm (12m)",      preco: 48.90,  img: "imagens/vergalhao-8mm-12m.svg" },
+      { id: 5,  nome: "Tinta Acrílica 18L",       preco: 189.90, img: "imagens/tinta-acrilica-18l.svg" },
+      { id: 6,  nome: "Telha Cerâmica (un)",      preco: 2.80,   img: "imagens/telha-ceramica.svg" },
+      { id: 7,  nome: "Madeira Pinus 5x10cm",     preco: 18.50,  img: "imagens/madeira-pinus-5x10cm.svg" },
+      { id: 8,  nome: "Tubo PVC 100mm (6m)",      preco: 67.00,  img: "imagens/tubo-pvc-100mm-6m.svg" },
+      { id: 9,  nome: "Argamassa AC-II 20kg",     preco: 24.90,  img: "imagens/argamassa-ac-ii-20kg.svg" },
+      { id: 10, nome: "Brita 1 (m³)",             preco: 110.00, img: "imagens/brita-1-m3.svg" },
+      { id: 11, nome: "Piso Cerâmico 45x45",      preco: 29.90,  img: "imagens/piso-ceramico-45x45.svg" },
+      { id: 12, nome: "Gesso Acartonado (placa)", preco: 42.00,  img: "imagens/gesso-acartonado.svg" }
+    ];
+
+    // Carrinho (salva no localStorage)
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // ========== RENDERIZAR PRODUTOS ==========
+    function renderProdutos() {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = produtos.map(p => `
+        <div class="card">
+          <img src="${p.img}" alt="${p.nome}" loading="lazy">
+          <div class="card-info">
+            <h3>${p.nome}</h3>
+            <p class="preco">R$ ${p.preco.toFixed(2).replace('.', ',')}</p>
+            <button class="add-btn" onclick="adicionarAoCarrinho(${p.id})">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ========== CARRINHO ==========
+    function adicionarAoCarrinho(id) {
+      const produto = produtos.find(p => p.id === id);
+      const item = carrinho.find(i => i.id === id);
+
+      if (item) {
+        item.qty += 1;
+      } else {
+        carrinho.push({ ...produto, qty: 1 });
+      }
+
+      salvarCarrinho();
+      atualizarCarrinhoUI();
+      alert('✅ ' + produto.nome + ' adicionado ao carrinho!');
+    }
+
+    function alterarQtd(id, delta) {
+      const item = carrinho.find(i => i.id === id);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        carrinho = carrinho.filter(i => i.id !== id);
+      }
+
+      salvarCarrinho();
+      atualizarCarrinhoUI();
+    }
+
+    function removerItem(id) {
+      carrinho = carrinho.filter(i => i.id !== id);
+      salvarCarrinho();
+      atualizarCarrinhoUI();
+    }
+
+    function limparCarrinho() {
+      if (confirm('Deseja limpar todo o carrinho?')) {
+        carrinho = [];
+        salvarCarrinho();
+        atualizarCarrinhoUI();
+      }
+    }
+
+    function salvarCarrinho() {
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    }
+
+    function atualizarCarrinhoUI() {
+      const count = carrinho.reduce((acc, item) => acc + item.qty, 0);
+      document.getElementById('cart-count').textContent = count;
+
+      const container = document.getElementById('cart-items');
+      const totalArea = document.getElementById('cart-total-area');
+
+      if (carrinho.length === 0) {
+        container.innerHTML = '<p class="empty-cart">Seu carrinho está vazio</p>';
+        totalArea.style.display = 'none';
+        return;
+      }
+
+      totalArea.style.display = 'block';
+
+      container.innerHTML = carrinho.map(item => `
+        <div class="cart-item">
+          <img src="${item.img}" alt="${item.nome}">
+          <div class="cart-item-info">
+            <h4>${item.nome}</h4>
+            <p>R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+            <div class="qty-controls">
+              <button onclick="alterarQtd(${item.id}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="alterarQtd(${item.id}, 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-item" onclick="removerItem(${item.id})" title="Remover">🗑️</button>
+        </div>
+      `).join('');
+
+      const total = carrinho.reduce((acc, item) => acc + (item.preco * item.qty), 0);
+      document.getElementById('cart-total').textContent = total.toFixed(2).replace('.', ',');
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-overlay').classList.toggle('active');
+    }
+
+    function finalizarCompra() {
+      if (carrinho.length === 0) return;
+
+      const total = carrinho.reduce((acc, item) => acc + (item.preco * item.qty), 0);
+      const resumo = carrinho.map(i => i.qty + 'x ' + i.nome).join('\n');
+
+      alert('✅ Pedido realizado com sucesso!\n\nItens:\n' + resumo + '\n\nTotal: R$ ' + total.toFixed(2).replace('.', ',') + '\n\nEm breve entraremos em contato.');
+      
+      carrinho = [];
+      salvarCarrinho();
+      atualizarCarrinhoUI();
+      toggleCart();
+    }
+
+    // Fechar carrinho ao clicar fora
+    document.getElementById('cart-overlay').addEventListener('click', function(e) {
+      if (e.target === this) toggleCart();
+    });
+
+    // ========== FORMULÁRIO DE CONTATO ==========
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      if (!nome || !email || !mensagem) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+      }
+
+      alert('✅ Mensagem enviada com sucesso!\n\nObrigado, ' + nome + '! Entraremos em contato em breve.');
+      this.reset();
+    });
+
+    // ========== INICIALIZAÇÃO ==========
+    renderProdutos();
+    atualizarCarrinhoUI();
+  </script>
 
 </body>
 </html>
